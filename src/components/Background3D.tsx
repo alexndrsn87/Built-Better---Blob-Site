@@ -6,16 +6,16 @@ export default function Background3D() {
   const mouseY = useMotionValue(0.5);
   const { scrollY } = useScroll();
 
-  const smoothX = useSpring(mouseX, { stiffness: 130, damping: 16, mass: 0.6 });
-  const smoothY = useSpring(mouseY, { stiffness: 130, damping: 16, mass: 0.6 });
+  const smoothX = useSpring(mouseX, { stiffness: 22, damping: 22, mass: 1.8 });
+  const smoothY = useSpring(mouseY, { stiffness: 22, damping: 22, mass: 1.8 });
 
   // Map normalised mouse position to a gentle pixel offset
-  const particleX = useTransform(smoothX, [0, 1], [-56, 56]);
+  const particleX = useTransform(smoothX, [0, 1], [-24, 24]);
 
   // Combine mouse Y offset + scroll parallax into a single Y value
   const particleY = useTransform(
     [smoothY, scrollY],
-    ([my, sy]: number[]) => (my - 0.5) * 84 + sy * -0.05
+    ([my, sy]: number[]) => (my - 0.5) * 36 + sy * -0.02
   );
 
   const spotlightX = useTransform(smoothX, [0, 1], ['10%', '90%']);
@@ -43,12 +43,12 @@ export default function Background3D() {
       id: i,
       left: `${Math.random() * 100}%`,
       top: `${Math.random() * 100}%`,
-      size: Math.random() * 5 + 2.5,
-      duration: Math.random() * 16 + 12,
+      size: Math.random() * 4.4 + 2.2,
+      duration: Math.random() * 26 + 28,
       delay: Math.random() * -40,
-      opacity: Math.random() * 0.42 + 0.26,
-      xOffset: (Math.random() - 0.5) * 135,
-      yOffset: (Math.random() - 0.5) * 135,
+      opacity: Math.random() * 0.36 + 0.2,
+      xOffset: (Math.random() - 0.5) * 85,
+      yOffset: (Math.random() - 0.5) * 85,
     }));
   }, []);
 
@@ -95,7 +95,7 @@ export default function Background3D() {
             animate={{
               x: [0, p.xOffset, 0],
               y: [0, p.yOffset, 0],
-              scale: [0.72, 1.35, 0.72],
+              scale: [0.88, 1.08, 0.88],
               opacity: [p.opacity * 0.2, p.opacity, p.opacity * 0.2],
             }}
             transition={{
