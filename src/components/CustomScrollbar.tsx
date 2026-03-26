@@ -21,10 +21,25 @@ export default function CustomScrollbar() {
       {/* Subtle track */}
       <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-1.5 bg-white/10 rounded-full" />
       
+      {/* Blurred depth glow behind blob */}
+      <motion.div
+        style={{ top, y }}
+        className="absolute left-1/2 -translate-x-1/2 w-10 h-24 bg-gradient-to-b from-yellow via-pink to-blue opacity-40 blur-[10px] scale-110"
+        animate={{
+          borderRadius: [
+            "40% 60% 70% 30% / 40% 50% 60% 50%",
+            "60% 40% 30% 70% / 60% 30% 70% 40%",
+            "50% 50% 40% 60% / 50% 60% 40% 50%",
+            "40% 60% 70% 30% / 40% 50% 60% 50%"
+          ]
+        }}
+        transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
+      />
+
       {/* Juicy Blob Thumb */}
       <motion.div
         style={{ top, y }}
-        className="absolute left-0 w-8 h-20 bg-gradient-to-b from-yellow via-pink to-blue shadow-[0_0_20px_rgba(218,65,103,0.5)]"
+        className="absolute left-0 w-8 h-20 bg-gradient-to-b from-yellow via-pink to-blue shadow-[0_0_24px_rgba(218,65,103,0.6),0_0_8px_rgba(255,235,15,0.4)]"
         animate={{
           borderRadius: [
             "40% 60% 70% 30% / 40% 50% 60% 50%",
