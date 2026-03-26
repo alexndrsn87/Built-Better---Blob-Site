@@ -46,7 +46,7 @@ export default function Sandbox() {
               whileHover={{ scale: 1.03, y: -10 }}
               className="glass-panel p-8 rounded-[32px] flex flex-col items-start text-left"
             >
-              <div className="bg-navy/50 p-4 rounded-2xl mb-6 border border-white/10">
+              <div className="glass-panel-dark p-4 rounded-2xl mb-6">
                 {card.icon}
               </div>
               <h3 className="text-2xl font-display font-bold mb-3">{card.title}</h3>

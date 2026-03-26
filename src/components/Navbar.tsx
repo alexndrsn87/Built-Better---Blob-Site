@@ -1,7 +1,11 @@
 import { motion } from 'motion/react';
 import { useState, useEffect } from 'react';
 
-export default function Navbar() {
+type NavbarProps = {
+  onRequestPrototype?: () => void;
+};
+
+export default function Navbar({ onRequestPrototype }: NavbarProps) {
   const [overLight, setOverLight] = useState(false);
 
   useEffect(() => {
@@ -59,6 +63,8 @@ export default function Navbar() {
       </div>
 
       <motion.button
+        type="button"
+        onClick={() => onRequestPrototype?.()}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         className="bg-yellow text-navy font-bold px-6 py-2.5 rounded-full shadow-[0_4px_14px_0_rgba(255,235,15,0.39)] hover:shadow-[0_6px_20px_rgba(255,235,15,0.23)] transition-shadow"

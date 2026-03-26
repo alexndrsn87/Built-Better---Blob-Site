@@ -16,7 +16,7 @@ export default function Pricing() {
           {/* Starter Quest */}
           <motion.div
             whileHover={{ scale: 1.02, y: -10 }}
-            className="bg-white p-10 rounded-[40px] shadow-xl border-4 border-transparent hover:border-pink/20 transition-colors flex flex-col"
+            className="glass-panel-light p-10 rounded-[40px] shadow-xl border border-transparent hover:border-pink/30 transition-colors flex flex-col"
           >
             <div className="mb-8">
               <h3 className="text-3xl font-display font-bold mb-2">The essentials</h3>
@@ -35,7 +35,7 @@ export default function Pricing() {
             <ul className="space-y-4 mb-10 flex-1">
               {['A custom 5-page design', 'Works perfectly on mobiles', 'Fast hosting included', 'Basic setup for Google (SEO)', 'Monthly updates to keep things fresh'].map((feature, i) => (
                 <li key={i} className="flex items-center gap-3 font-medium">
-                  <div className="bg-pink/10 p-1 rounded-full text-pink">
+                  <div className="glass-panel-light p-1 rounded-full text-pink">
                     <Check className="w-4 h-4" />
                   </div>
                   {feature}
@@ -54,7 +54,7 @@ export default function Pricing() {
           {/* Power-Up */}
           <motion.div
             whileHover={{ scale: 1.02, y: -10 }}
-            className="bg-navy text-white p-10 rounded-[40px] shadow-2xl relative flex flex-col"
+            className="glass-panel text-white p-10 rounded-[40px] shadow-2xl relative flex flex-col"
           >
             <div className="absolute -top-5 right-8 bg-yellow text-navy font-bold px-4 py-2 rounded-full text-sm flex items-center gap-1 shadow-lg">
               <Zap className="w-4 h-4" /> Most popular
@@ -76,7 +76,7 @@ export default function Pricing() {
             <ul className="space-y-4 mb-10 flex-1">
               {['Up to 15 pages', 'Edit the site yourself (CMS)', 'Advanced setup for Google (SEO)', 'Priority support when you need us', 'A dashboard to track visitors', 'Ready for online selling'].map((feature, i) => (
                 <li key={i} className="flex items-center gap-3 font-medium">
-                  <div className="bg-yellow/20 p-1 rounded-full text-yellow">
+                  <div className="glass-panel p-1 rounded-full text-yellow">
                     <Check className="w-4 h-4" />
                   </div>
                   {feature}
@@ -93,8 +93,8 @@ export default function Pricing() {
           </motion.div>
         </div>
 
-        <div className="mt-12 max-w-3xl mx-auto bg-pink/10 border border-pink/20 rounded-3xl p-6 flex flex-col sm:flex-row items-center gap-4 text-center sm:text-left">
-          <div className="bg-pink text-white p-3 rounded-2xl shrink-0">
+        <div className="mt-12 max-w-3xl mx-auto glass-panel-light border border-pink/30 rounded-3xl p-6 flex flex-col sm:flex-row items-center gap-4 text-center sm:text-left">
+          <div className="glass-panel text-white p-3 rounded-2xl shrink-0">
             <Heart className="w-6 h-6" />
           </div>
           <div>

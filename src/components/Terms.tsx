@@ -46,7 +46,7 @@ export default function Terms() {
                 transition={{ delay: i * 0.1 }}
                 className="flex gap-4"
               >
-                <div className="mt-1 bg-white/10 p-3 rounded-2xl h-fit text-blue shrink-0">
+                <div className="mt-1 glass-panel p-3 rounded-2xl h-fit text-blue shrink-0">
                   {term.icon}
                 </div>
                 <div>
