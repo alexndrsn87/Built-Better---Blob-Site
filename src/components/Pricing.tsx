@@ -3,9 +3,9 @@ import { Check, Heart, Zap } from 'lucide-react';
 
 export default function Pricing() {
   return (
-    <section id="pricing" className="relative z-10 py-32 px-4 bg-shell text-navy rounded-[48px] mx-4 my-12 shadow-2xl">
+    <section id="pricing" className="relative z-10 py-20 px-4 bg-shell text-navy rounded-[48px] mx-4 my-8 shadow-2xl">
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
+        <div className="text-center mb-12">
           <h2 className="text-4xl md:text-6xl font-display font-bold mb-6">Simple, honest pricing</h2>
           <p className="text-xl text-navy/70 max-w-2xl mx-auto font-medium">
             We don't do hidden fees. And if you pay for a year upfront, we'll take £100 off your setup cost.
@@ -93,7 +93,7 @@ export default function Pricing() {
           </motion.div>
         </div>
 
-        <div className="mt-16 max-w-3xl mx-auto bg-pink/10 border border-pink/20 rounded-3xl p-6 flex flex-col sm:flex-row items-center gap-4 text-center sm:text-left">
+        <div className="mt-12 max-w-3xl mx-auto bg-pink/10 border border-pink/20 rounded-3xl p-6 flex flex-col sm:flex-row items-center gap-4 text-center sm:text-left">
           <div className="bg-pink text-white p-3 rounded-2xl shrink-0">
             <Heart className="w-6 h-6" />
           </div>

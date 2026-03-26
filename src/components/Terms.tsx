@@ -26,9 +26,9 @@ export default function Terms() {
   ];
 
   return (
-    <section id="terms" className="relative z-10 py-32 px-4">
+    <section id="terms" className="relative z-10 py-20 px-4">
       <div className="max-w-4xl mx-auto">
-        <div className="text-center mb-16">
+        <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-display font-bold mb-6">The small print</h2>
           <p className="text-xl text-shell/80">
             Clear, honest rules for your £49 prototype. We don't like surprises either.

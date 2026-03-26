@@ -6,16 +6,27 @@ export default function Background3D() {
   const mouseY = useMotionValue(0.5);
   const { scrollY } = useScroll();
 
-  const smoothX = useSpring(mouseX, { stiffness: 60, damping: 25 });
-  const smoothY = useSpring(mouseY, { stiffness: 60, damping: 25 });
+  const smoothX = useSpring(mouseX, { stiffness: 130, damping: 16, mass: 0.6 });
+  const smoothY = useSpring(mouseY, { stiffness: 130, damping: 16, mass: 0.6 });
 
   // Map normalised mouse position to a gentle pixel offset
-  const particleX = useTransform(smoothX, [0, 1], [-28, 28]);
+  const particleX = useTransform(smoothX, [0, 1], [-56, 56]);
 
   // Combine mouse Y offset + scroll parallax into a single Y value
   const particleY = useTransform(
     [smoothY, scrollY],
-    ([my, sy]: number[]) => (my - 0.5) * 40 + sy * -0.03
+    ([my, sy]: number[]) => (my - 0.5) * 84 + sy * -0.05
+  );
+
+  const spotlightX = useTransform(smoothX, [0, 1], ['10%', '90%']);
+  const spotlightY = useTransform(
+    [smoothY, scrollY],
+    ([my, sy]: number[]) => `${Math.max(8, Math.min(92, my * 100 - sy * 0.01))}%`
+  );
+  const spotlightGradient = useTransform(
+    [spotlightX, spotlightY],
+    ([x, y]) =>
+      `radial-gradient(420px circle at ${x} ${y}, rgba(255,255,255,0.10), rgba(255,255,255,0.035) 28%, rgba(10,4,70,0) 62%)`
   );
 
   useEffect(() => {
@@ -28,16 +39,16 @@ export default function Background3D() {
   }, [mouseX, mouseY]);
 
   const particles = useMemo(() => {
-    return Array.from({ length: 40 }).map((_, i) => ({
+    return Array.from({ length: 78 }).map((_, i) => ({
       id: i,
       left: `${Math.random() * 100}%`,
       top: `${Math.random() * 100}%`,
-      size: Math.random() * 3 + 2, // 2px to 5px
-      duration: Math.random() * 20 + 20,
+      size: Math.random() * 5 + 2.5,
+      duration: Math.random() * 16 + 12,
       delay: Math.random() * -40,
-      opacity: Math.random() * 0.35 + 0.2, // 0.2 to 0.55
-      xOffset: (Math.random() - 0.5) * 100,
-      yOffset: (Math.random() - 0.5) * 100,
+      opacity: Math.random() * 0.42 + 0.26,
+      xOffset: (Math.random() - 0.5) * 135,
+      yOffset: (Math.random() - 0.5) * 135,
     }));
   }, []);
 
@@ -84,7 +95,8 @@ export default function Background3D() {
             animate={{
               x: [0, p.xOffset, 0],
               y: [0, p.yOffset, 0],
-              opacity: [p.opacity * 0.3, p.opacity, p.opacity * 0.3],
+              scale: [0.72, 1.35, 0.72],
+              opacity: [p.opacity * 0.2, p.opacity, p.opacity * 0.2],
             }}
             transition={{
               duration: p.duration,
@@ -95,6 +107,12 @@ export default function Background3D() {
           />
         ))}
       </motion.div>
+
+      {/* Lusion-inspired interactive light sweep */}
+      <motion.div
+        className="absolute inset-0 z-[9]"
+        style={{ background: spotlightGradient }}
+      />
     </div>
   );
 }

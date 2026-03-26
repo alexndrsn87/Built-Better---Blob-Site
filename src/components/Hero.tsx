@@ -2,7 +2,7 @@ import { motion } from 'motion/react';
 
 export default function Hero() {
   return (
-    <section className="relative z-10 min-h-screen flex flex-col items-center justify-center px-4 pt-20 text-center">
+    <section className="relative z-10 min-h-[84vh] flex flex-col items-center justify-center px-4 pt-16 pb-10 text-center">
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
@@ -15,7 +15,7 @@ export default function Hero() {
             without the headache.
           </span>
         </h1>
-        <p className="text-xl md:text-2xl font-medium text-shell/90 max-w-2xl mx-auto mb-10 leading-relaxed">
+        <p className="text-xl md:text-2xl font-medium text-shell/90 max-w-2xl mx-auto mb-8 leading-relaxed">
           No hidden fees. No tech jargon. Just a great website that works for your business.
         </p>
         
@@ -35,6 +35,21 @@ export default function Hero() {
             See what it costs
           </motion.button>
         </div>
+        <motion.div
+          className="mt-8 inline-flex flex-col items-center gap-2 text-shell/70"
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.8, duration: 0.5 }}
+        >
+          <span className="text-[11px] tracking-[0.2em] uppercase font-display">Scroll to explore</span>
+          <div className="h-9 w-[1px] bg-gradient-to-b from-shell/90 via-shell/40 to-transparent overflow-hidden">
+            <motion.div
+              className="h-3 w-[1px] bg-shell"
+              animate={{ y: [-1, 22, -1], opacity: [0.2, 1, 0.2] }}
+              transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
+            />
+          </div>
+        </motion.div>
       </motion.div>
     </section>
   );
