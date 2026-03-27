@@ -74,7 +74,7 @@ export default function Navbar({ onRequestPrototype }: NavbarProps) {
         whileTap={{ scale: 0.95 }}
         className="shrink-0 rounded-full bg-yellow px-4 py-2 text-sm font-bold text-navy shadow-[0_4px_14px_0_rgba(255,235,15,0.39)] transition-shadow hover:shadow-[0_6px_20px_rgba(255,235,15,0.23)] sm:px-6 sm:py-2.5 sm:text-base"
       >
-        Try a prototype
+        Book mockup
       </motion.button>
     </motion.nav>
   );

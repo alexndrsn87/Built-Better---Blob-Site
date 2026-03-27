@@ -4,9 +4,9 @@ import { Sparkles, Shield, MessageCircle, MapPin } from 'lucide-react';
 const pillars = [
   {
     icon: Sparkles,
-    title: 'Zero-Risk Demo',
+    title: '£49 test-site mockup',
     body:
-      'We build a custom demo of your site first. If you love it, we launch it. No upfront risk.',
+      'Before you commit, we can build a mockup so you can see how your site could look. It costs £49 — if you like it and sign up, that £49 comes off your setup fee.',
   },
   {
     icon: Shield,

@@ -69,13 +69,15 @@ export default function PrototypeModal({ open, onClose }: PrototypeModalProps) {
             <div className="relative flex items-start justify-between gap-4">
               <div>
                 <p className="text-xs font-display font-semibold uppercase tracking-[0.2em] text-yellow">
-                  £49 prototype
+                  £49 test-site mockup
                 </p>
                 <h2 id={titleId} className="mt-2 font-display text-2xl font-bold text-white md:text-3xl">
-                  Try a prototype
+                  Get started
                 </h2>
                 <p className="mt-2 text-sm text-shell/80">
-                  Tell us a bit about you and what you need. We&apos;ll get back within one business day.
+                  We&apos;ll build a mockup so you can see how your site could look. If you sign up to a
+                  package, the £49 comes off your setup fee. Tell us a bit about you — we&apos;ll reply within
+                  one business day.
                 </p>
               </div>
               <button

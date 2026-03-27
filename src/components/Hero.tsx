@@ -30,10 +30,23 @@ export default function Hero({ onRequestPrototype }: HeroProps) {
           Professional websites for local businesses and tradies — built for you, managed by us.
         </p>
 
-        <div className="mx-auto mb-10 flex max-w-xl flex-wrap items-center justify-center gap-3 text-sm font-medium text-shell/90 md:text-base">
+        <div className="mx-auto mb-6 flex max-w-xl flex-wrap items-center justify-center gap-3 text-sm font-medium text-shell/90 md:text-base">
           <span className="glass-panel rounded-full px-4 py-2">No technical skills required</span>
           <span className="glass-panel rounded-full px-4 py-2">Fixed monthly costs</span>
         </div>
+
+        <div className="mx-auto mb-6 max-w-2xl rounded-[28px] border border-yellow/25 bg-yellow/10 px-5 py-4 text-left text-sm leading-relaxed text-shell/95 shadow-[0_0_40px_rgba(255,235,15,0.08)] md:text-base">
+          <p className="font-display font-bold text-yellow">£49 test-site mockup</p>
+          <p className="mt-1">
+            See how your site could look before you commit. For £49 we build a mockup you can review — if you
+            like it and go ahead, that £49 comes off your sign-up fee.
+          </p>
+        </div>
+
+        <p className="mx-auto mb-10 max-w-xl text-sm font-medium text-shell/80 md:text-base">
+          <span className="text-shell/95">15% off setup</span> for NHS staff, Blue Light Card holders, and Armed
+          Forces personnel — thank you for what you do.
+        </p>
 
         <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
           <motion.a
@@ -42,7 +55,7 @@ export default function Hero({ onRequestPrototype }: HeroProps) {
             whileTap={{ scale: 0.95 }}
             className="w-full rounded-full bg-yellow px-8 py-4 text-lg font-bold text-navy shadow-[0_8px_30px_rgb(255,235,15,0.3)] transition-shadow hover:shadow-[0_8px_30px_rgb(255,235,15,0.5)] sm:w-auto"
           >
-            See your demo
+            See pricing &amp; mockup
           </motion.a>
           <motion.button
             type="button"

@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { Check, Zap } from 'lucide-react';
+import { Check, Zap, Heart } from 'lucide-react';
 
 type PricingProps = {
   onRequestPrototype?: () => void;
@@ -10,7 +10,12 @@ const tiers = [
     name: 'The Starter',
     setup: 299,
     monthly: 25,
-    features: ['1-page pro site', 'Domain setup', 'Hosting included', 'WhatsApp support'],
+    features: [
+      '1-page pro site',
+      'Domain management & renewal support',
+      'Hosting included',
+      'WhatsApp support',
+    ],
     cta: 'Choose Starter',
     highlight: false,
   },
@@ -21,7 +26,7 @@ const tiers = [
     features: [
       '4-page custom site',
       'Professional copy',
-      'Domain management',
+      'Domain management & renewal support',
       'Unlimited content updates',
     ],
     cta: 'Choose Business',
@@ -32,7 +37,7 @@ const tiers = [
     setup: 599,
     monthly: 50,
     features: [
-      'Everything in Business',
+      'Everything in Business (incl. domain management)',
       'Google Business Profile setup',
       'Basic SEO pack',
       'Monthly performance reports',
@@ -62,6 +67,45 @@ export default function Pricing({ onRequestPrototype }: PricingProps) {
             Clear setup fees and simple monthly plans — so you always know what you&apos;re paying for.
           </p>
         </div>
+
+        <div className="mx-auto mb-10 grid max-w-4xl grid-cols-1 gap-6 md:grid-cols-2">
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="glass-panel-light rounded-3xl border border-pink/25 p-6 text-left shadow-lg md:p-8"
+          >
+            <h3 className="font-display text-xl font-bold text-navy md:text-2xl">£49 test-site mockup</h3>
+            <p className="mt-2 text-sm font-medium leading-relaxed text-navy/80 md:text-base">
+              Not sure yet? We’ll build a mockup so you can see how your site could look. The £49 is paid
+              upfront — if you go ahead with a package, we take it off your sign-up fee.
+            </p>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="glass-panel-light flex gap-4 rounded-3xl border border-pink/25 p-6 text-left shadow-lg md:p-8"
+          >
+            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-pink text-white">
+              <Heart className="h-6 w-6" />
+            </div>
+            <div>
+              <h3 className="font-display text-xl font-bold text-navy md:text-2xl">15% hero discount</h3>
+              <p className="mt-2 text-sm font-medium leading-relaxed text-navy/80 md:text-base">
+                NHS staff, Blue Light Card holders, and Armed Forces personnel get{' '}
+                <span className="font-bold text-pink">15% off setup</span> on any package. We may ask for
+                simple verification.
+              </p>
+            </div>
+          </motion.div>
+        </div>
+
+        <p className="mx-auto mb-10 max-w-3xl text-center text-sm leading-relaxed text-navy/65 md:text-base">
+          <span className="font-semibold text-navy/80">Domains:</span> every package includes domain
+          management and renewal support. The actual cost depends on the domain name and registrar you choose
+          — pricing isn&apos;t set by us, and we don&apos;t own or control third-party domains.
+        </p>
 
         <div className="mx-auto grid max-w-6xl grid-cols-1 gap-8 md:grid-cols-3">
           {tiers.map((tier) => (
