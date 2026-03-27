@@ -45,48 +45,32 @@ export default function Hero({ onRequestPrototype }: HeroProps) {
         </div>
 
         <motion.div
-          className="mt-10 flex flex-col items-center md:mt-14"
-          initial={{ opacity: 0, y: 12 }}
+          className="mt-10 flex flex-col items-center md:mt-12"
+          initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.8, duration: 0.5 }}
+          transition={{ delay: 0.75, duration: 0.45 }}
         >
-          <motion.p
-            className="font-display text-4xl font-black uppercase tracking-tight text-white drop-shadow-[0_0_40px_rgba(255,235,15,0.35)] sm:text-5xl md:text-6xl"
-            animate={{ y: [0, 10, 0] }}
-            transition={{ repeat: Infinity, duration: 2.2, ease: 'easeInOut' }}
-          >
+          <p className="text-xs font-medium uppercase tracking-[0.2em] text-shell/75 md:text-sm">
             Scroll down
-          </motion.p>
-          <p className="mt-2 text-sm font-semibold uppercase tracking-[0.35em] text-yellow sm:text-base">
-            There&apos;s more below
           </p>
-          <div className="relative mt-6 flex flex-col items-center">
-            <div className="absolute inset-0 animate-pulse rounded-full bg-yellow/10 blur-2xl" />
-            <div className="relative flex flex-col items-center gap-0">
-              {[0, 1, 2, 3].map((i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0.25, y: -6 }}
-                  animate={{ opacity: [0.25, 1, 0.25], y: [0, 14, 0] }}
-                  transition={{
-                    repeat: Infinity,
-                    duration: 1.35,
-                    delay: i * 0.12,
-                    ease: 'easeInOut',
-                  }}
-                >
-                  <ChevronDown
-                    className="h-14 w-14 text-yellow drop-shadow-[0_0_24px_rgba(255,235,15,0.95)] sm:h-16 sm:w-16 md:h-20 md:w-20"
-                    strokeWidth={3.5}
-                  />
-                </motion.div>
-              ))}
-            </div>
-            <motion.div
-              className="mt-2 h-3 w-3 rounded-full bg-yellow shadow-[0_0_28px_rgba(255,235,15,1)]"
-              animate={{ scale: [1, 1.35, 1], opacity: [0.7, 1, 0.7] }}
-              transition={{ repeat: Infinity, duration: 1.2, ease: 'easeInOut' }}
-            />
+          <div className="mt-3 flex flex-col items-center gap-0.5">
+            {[0, 1, 2].map((i) => (
+              <motion.div
+                key={i}
+                animate={{ opacity: [0.35, 1, 0.35], y: [0, 4, 0] }}
+                transition={{
+                  repeat: Infinity,
+                  duration: 1.5,
+                  delay: i * 0.15,
+                  ease: 'easeInOut',
+                }}
+              >
+                <ChevronDown
+                  className="h-5 w-5 text-yellow/90 md:h-6 md:w-6"
+                  strokeWidth={2.25}
+                />
+              </motion.div>
+            ))}
           </div>
         </motion.div>
       </motion.div>

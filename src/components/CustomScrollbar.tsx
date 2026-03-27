@@ -1,7 +1,11 @@
 import { motion, useScroll, useTransform, useSpring } from 'motion/react';
 
-/** Electrons orbiting the scroll track (atom-style). */
-function OrbitElectrons() {
+type OrbitElectronsProps = {
+  className?: string;
+};
+
+/** Electrons orbiting a local area (positioned by parent — trails the thumb). */
+function OrbitElectrons({ className = '' }: OrbitElectronsProps) {
   const orbitR = 24;
   const orbitOuter = 32;
   const colors = [
@@ -10,8 +14,8 @@ function OrbitElectrons() {
     'bg-blue shadow-[0_0_12px_rgba(25,123,189,0.95)]',
   ];
   return (
-    <>
-      <div className="pointer-events-none absolute inset-x-0 top-2 bottom-2 flex items-center justify-center">
+    <div className={`relative h-full w-full ${className}`}>
+      <div className="absolute inset-0 flex items-center justify-center">
         <motion.div
           className="relative h-full w-12"
           animate={{ rotate: 360 }}
@@ -30,7 +34,7 @@ function OrbitElectrons() {
           ))}
         </motion.div>
       </div>
-      <div className="pointer-events-none absolute inset-x-0 top-2 bottom-2 flex items-center justify-center">
+      <div className="absolute inset-0 flex items-center justify-center">
         <motion.div
           className="relative h-full w-12"
           animate={{ rotate: -360 }}
@@ -55,7 +59,7 @@ function OrbitElectrons() {
           ))}
         </motion.div>
       </div>
-    </>
+    </div>
   );
 }
 
@@ -68,8 +72,20 @@ export default function CustomScrollbar() {
     restDelta: 0.001,
   });
 
+  /** Slower spring so atom orbits trail behind the thumb */
+  const trailProgress = useSpring(scrollYProgress, {
+    stiffness: 22,
+    damping: 38,
+    mass: 1.4,
+    restDelta: 0.0005,
+  });
+
   const top = useTransform(smoothProgress, [0, 1], ['0%', '100%']);
   const y = useTransform(smoothProgress, [0, 1], ['0%', '-100%']);
+
+  const trailTop = useTransform(trailProgress, [0, 1], ['0%', '100%']);
+  const trailY = useTransform(trailProgress, [0, 1], ['0%', '-100%']);
+
   const glowScale = useTransform(smoothProgress, [0, 0.5, 1], [0.95, 1.18, 0.95]);
   const glowOpacity = useTransform(smoothProgress, [0, 0.5, 1], [0.45, 0.85, 0.45]);
   const beamHeight = useTransform(smoothProgress, [0, 1], ['24%', '70%']);
@@ -78,13 +94,16 @@ export default function CustomScrollbar() {
 
   return (
     <div className="pointer-events-none fixed left-3 top-24 bottom-24 z-50 hidden w-14 md:block">
-      {/* Atom orbits around the track */}
-      <div className="absolute inset-0">
-        <OrbitElectrons />
-      </div>
-
       {/* Track */}
       <div className="absolute left-1/2 top-0 bottom-0 w-1.5 -translate-x-1/2 rounded-full bg-white/10" />
+
+      {/* Atom orbits — same geometry as thumb, but lagged so they trail down slowly */}
+      <motion.div
+        style={{ top: trailTop, y: trailY }}
+        className="absolute left-0 right-0 h-[5.5rem]"
+      >
+        <OrbitElectrons />
+      </motion.div>
 
       <motion.div
         style={{ height: beamHeight, opacity: beamOpacity }}
