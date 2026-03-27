@@ -17,16 +17,17 @@ export default function Hero({ onRequestPrototype }: HeroProps) {
         transition={{ type: 'spring', stiffness: 100, damping: 20, delay: 0.2 }}
         className="mx-auto max-w-4xl"
       >
-        <h1 className="mb-6 font-display text-4xl font-black leading-[1.1] tracking-tighter text-white sm:text-5xl md:text-6xl lg:text-7xl">
-          Professional websites for{' '}
+        <h1 className="mb-6 font-display text-6xl font-black leading-[1.1] tracking-tighter md:text-8xl">
+          Websites, <br className="hidden md:block" />
           <span className="animate-gradient bg-gradient-to-r from-yellow via-pink to-yellow bg-[length:200%_auto] bg-clip-text text-transparent">
-            local businesses & tradies.
+            without the headache.
           </span>
-          <br />
-          <span className="text-shell/95">Built for you, managed by us.</span>
         </h1>
-        <p className="mx-auto mb-8 max-w-2xl text-lg font-medium leading-relaxed text-shell/90 md:text-xl">
-          No tech stress. One predictable monthly cost. We handle the updates — you focus on customers.
+        <p className="mx-auto mb-3 max-w-2xl text-xl font-medium leading-relaxed text-shell/90 md:text-2xl">
+          No hidden fees. No tech jargon. Just a great website that works for your business.
+        </p>
+        <p className="mx-auto mb-8 max-w-2xl text-base font-medium leading-relaxed text-shell/75 md:text-lg">
+          Professional websites for local businesses and tradies — built for you, managed by us.
         </p>
 
         <div className="mx-auto mb-10 flex max-w-xl flex-wrap items-center justify-center gap-3 text-sm font-medium text-shell/90 md:text-base">
