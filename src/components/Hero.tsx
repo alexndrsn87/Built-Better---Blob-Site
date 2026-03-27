@@ -1,4 +1,5 @@
 import { motion } from 'motion/react';
+import { Link } from 'react-router-dom';
 import { ChevronDown, Check } from 'lucide-react';
 
 type HeroProps = {
@@ -73,14 +74,14 @@ export default function Hero({ onRequestPrototype }: HeroProps) {
         </p>
 
         <div className="flex flex-col items-center justify-center gap-5 sm:flex-row sm:gap-6">
-          <motion.a
-            href="#pricing"
-            whileHover={{ scale: 1.05, y: -5 }}
-            whileTap={{ scale: 0.95 }}
-            className="w-full rounded-full bg-yellow px-10 py-4 text-lg font-bold text-navy shadow-[0_8px_30px_rgb(255,235,15,0.3)] transition-shadow hover:shadow-[0_8px_30px_rgb(255,235,15,0.5)] sm:w-auto"
-          >
-            See packages
-          </motion.a>
+          <motion.div whileHover={{ scale: 1.05, y: -5 }} whileTap={{ scale: 0.95 }} className="w-full sm:w-auto">
+            <Link
+              to="/pricing"
+              className="block w-full rounded-full bg-yellow px-10 py-4 text-center text-lg font-bold text-navy shadow-[0_8px_30px_rgb(255,235,15,0.3)] transition-shadow hover:shadow-[0_8px_30px_rgb(255,235,15,0.5)]"
+            >
+              See packages
+            </Link>
+          </motion.div>
           <motion.button
             type="button"
             whileHover={{ scale: 1.05, y: -5 }}
@@ -98,12 +99,12 @@ export default function Hero({ onRequestPrototype }: HeroProps) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.75, duration: 0.45 }}
         >
-          <a
-            href="#what-we-do"
-            className="text-xs font-medium uppercase tracking-[0.2em] text-shell/75 md:text-sm"
+          <Link
+            to="/what-we-do"
+            className="text-xs font-medium uppercase tracking-[0.2em] text-shell/75 transition-colors hover:text-yellow md:text-sm"
           >
-            Scroll down
-          </a>
+            What we do
+          </Link>
           <div className="mt-3 flex flex-col items-center gap-0.5">
             {[0, 1, 2].map((i) => (
               <motion.div

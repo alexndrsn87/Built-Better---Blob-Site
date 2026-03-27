@@ -1,28 +1,15 @@
 import { motion } from 'motion/react';
-import { useState, useEffect } from 'react';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 
 type NavbarProps = {
   onRequestPrototype?: () => void;
 };
 
 export default function Navbar({ onRequestPrototype }: NavbarProps) {
-  const [overLight, setOverLight] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const pricing = document.getElementById('pricing');
-      if (!pricing) return;
-      const { top, bottom } = pricing.getBoundingClientRect();
-      setOverLight(top < 96 && bottom > 0);
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  const { pathname } = useLocation();
+  const overLight = pathname === '/pricing';
 
   const textClass = overLight ? 'text-navy' : 'text-white';
-  const linkClass = `${textClass} hover:text-yellow transition-colors whitespace-nowrap`;
 
   const glassStyle = overLight
     ? {
@@ -37,8 +24,19 @@ export default function Navbar({ onRequestPrototype }: NavbarProps) {
         backdropFilter: 'blur(24px) saturate(200%)',
         WebkitBackdropFilter: 'blur(24px) saturate(200%)',
         border: '1px solid rgba(255, 255, 255, 0.22)',
-        boxShadow: '0 8px 40px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.18), inset 0 -1px 0 rgba(255,255,255,0.06)',
+        boxShadow:
+          '0 8px 40px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.18), inset 0 -1px 0 rgba(255,255,255,0.06)',
       };
+
+  const navLinkClass = ({ isActive }: { isActive: boolean }) =>
+    [
+      'transition-colors whitespace-nowrap rounded-full px-1 py-0.5',
+      overLight ? 'text-navy' : 'text-white',
+      isActive ? (overLight ? 'font-semibold text-pink' : 'text-yellow') : '',
+      !isActive && (overLight ? 'hover:text-navy/80' : 'hover:text-yellow'),
+    ]
+      .filter(Boolean)
+      .join(' ');
 
   return (
     <motion.nav
@@ -48,23 +46,25 @@ export default function Navbar({ onRequestPrototype }: NavbarProps) {
       style={glassStyle}
       className="fixed top-7 left-1/2 z-50 flex w-[94%] max-w-6xl -translate-x-1/2 flex-wrap items-center justify-between gap-3 rounded-full px-5 py-3.5 sm:px-7 sm:py-4 md:flex-nowrap"
     >
-      <a href="#home" className="flex shrink-0 items-center gap-3">
+      <Link to="/" className="flex shrink-0 items-center gap-3">
         <img src="/logo.png" alt="" className="h-9 w-9 rounded-xl shadow-sm sm:h-10 sm:w-10" />
-        <span className={`font-display text-lg font-bold tracking-tight sm:text-xl ${textClass} transition-colors duration-300`}>
+        <span
+          className={`font-display text-lg font-bold tracking-tight sm:text-xl ${textClass} transition-colors duration-300`}
+        >
           Built Better
         </span>
-      </a>
+      </Link>
 
       <div className="order-3 flex w-full items-center justify-center gap-5 text-sm font-medium md:order-none md:w-auto md:gap-10 md:text-base">
-        <a href="#home" className={linkClass}>
+        <NavLink to="/" end className={navLinkClass}>
           Home
-        </a>
-        <a href="#what-we-do" className={linkClass}>
+        </NavLink>
+        <NavLink to="/what-we-do" className={navLinkClass}>
           What we do
-        </a>
-        <a href="#pricing" className={linkClass}>
+        </NavLink>
+        <NavLink to="/pricing" className={navLinkClass}>
           Pricing
-        </a>
+        </NavLink>
       </div>
 
       <motion.button
