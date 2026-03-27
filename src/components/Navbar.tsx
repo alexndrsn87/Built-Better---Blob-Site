@@ -46,7 +46,7 @@ export default function Navbar({ onRequestPrototype }: NavbarProps) {
       animate={{ y: 0, opacity: 1 }}
       transition={{ type: 'spring', stiffness: 200, damping: 20 }}
       style={glassStyle}
-      className="fixed top-6 left-1/2 z-50 flex w-[92%] max-w-5xl -translate-x-1/2 flex-wrap items-center justify-between gap-3 rounded-full px-4 py-3 sm:px-6 sm:py-4 md:flex-nowrap"
+      className="fixed top-7 left-1/2 z-50 flex w-[94%] max-w-6xl -translate-x-1/2 flex-wrap items-center justify-between gap-3 rounded-full px-5 py-3.5 sm:px-7 sm:py-4 md:flex-nowrap"
     >
       <a href="#home" className="flex shrink-0 items-center gap-3">
         <img src="/logo.png" alt="" className="h-9 w-9 rounded-xl shadow-sm sm:h-10 sm:w-10" />
@@ -55,7 +55,7 @@ export default function Navbar({ onRequestPrototype }: NavbarProps) {
         </span>
       </a>
 
-      <div className="order-3 flex w-full items-center justify-center gap-4 text-sm font-medium md:order-none md:w-auto md:gap-8 md:text-base">
+      <div className="order-3 flex w-full items-center justify-center gap-5 text-sm font-medium md:order-none md:w-auto md:gap-10 md:text-base">
         <a href="#home" className={linkClass}>
           Home
         </a>
