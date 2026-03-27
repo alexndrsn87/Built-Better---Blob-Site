@@ -30,7 +30,7 @@ export default function Navbar({ onRequestPrototype }: NavbarProps) {
 
   const navLinkClass = ({ isActive }: { isActive: boolean }) =>
     [
-      'transition-colors whitespace-nowrap rounded-full px-1 py-0.5',
+      'transition-colors whitespace-nowrap rounded-full px-1 py-0.5 text-base sm:text-lg md:text-[1.15rem]',
       overLight ? 'text-navy' : 'text-white',
       isActive ? (overLight ? 'font-semibold text-pink' : 'text-yellow') : '',
       !isActive && (overLight ? 'hover:text-navy/80' : 'hover:text-yellow'),
@@ -49,13 +49,13 @@ export default function Navbar({ onRequestPrototype }: NavbarProps) {
       <Link to="/" className="flex shrink-0 items-center gap-3">
         <img src="/logo.png" alt="" className="h-9 w-9 rounded-xl shadow-sm sm:h-10 sm:w-10" />
         <span
-          className={`font-display text-lg font-bold tracking-tight sm:text-xl ${textClass} transition-colors duration-300`}
+          className={`font-display text-xl font-bold tracking-tight sm:text-2xl ${textClass} transition-colors duration-300`}
         >
           Built Better
         </span>
       </Link>
 
-      <div className="order-3 flex w-full items-center justify-center gap-5 text-sm font-medium md:order-none md:w-auto md:gap-10 md:text-base">
+      <div className="order-3 flex w-full items-center justify-center gap-6 font-medium md:order-none md:w-auto md:gap-11">
         <NavLink to="/" end className={navLinkClass}>
           Home
         </NavLink>
@@ -72,7 +72,7 @@ export default function Navbar({ onRequestPrototype }: NavbarProps) {
         onClick={() => onRequestPrototype?.()}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-        className="shrink-0 rounded-full bg-yellow px-4 py-2 text-sm font-bold text-navy shadow-[0_4px_14px_0_rgba(255,235,15,0.39)] transition-shadow hover:shadow-[0_6px_20px_rgba(255,235,15,0.23)] sm:px-6 sm:py-2.5 sm:text-base"
+        className="shrink-0 rounded-full bg-yellow px-4 py-2 text-base font-bold text-navy shadow-[0_4px_14px_0_rgba(255,235,15,0.39)] transition-shadow hover:shadow-[0_6px_20px_rgba(255,235,15,0.23)] sm:px-6 sm:py-2.5 sm:text-lg"
       >
         £49 prototype
       </motion.button>

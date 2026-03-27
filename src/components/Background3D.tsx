@@ -10,12 +10,17 @@ export default function Background3D() {
   const smoothY = useSpring(mouseY, { stiffness: 22, damping: 22, mass: 1.8 });
 
   // Map normalised mouse position to a gentle pixel offset
-  const particleX = useTransform(smoothX, [0, 1], [-24, 24]);
+  const particleX = useTransform(smoothX, [0, 1], [-38, 38]);
 
   // Combine mouse Y offset + scroll parallax into a single Y value
   const particleY = useTransform(
     [smoothY, scrollY],
-    ([my, sy]: number[]) => (my - 0.5) * 36 + sy * -0.02
+    ([my, sy]: number[]) => (my - 0.5) * 54 + sy * -0.03
+  );
+  const particleDepthX = useTransform(smoothX, [0, 1], [-64, 64]);
+  const particleDepthY = useTransform(
+    [smoothY, scrollY],
+    ([my, sy]: number[]) => (my - 0.5) * 78 + sy * -0.04
   );
 
   const spotlightX = useTransform(smoothX, [0, 1], ['10%', '90%']);
@@ -39,16 +44,30 @@ export default function Background3D() {
   }, [mouseX, mouseY]);
 
   const particles = useMemo(() => {
-    return Array.from({ length: 78 }).map((_, i) => ({
+    return Array.from({ length: 95 }).map((_, i) => ({
       id: i,
       left: `${Math.random() * 100}%`,
       top: `${Math.random() * 100}%`,
-      size: Math.random() * 4.4 + 2.2,
-      duration: Math.random() * 52 + 56,
+      size: Math.random() * 3.6 + 1.4,
+      duration: Math.random() * 46 + 40,
       delay: Math.random() * -40,
-      opacity: Math.random() * 0.36 + 0.2,
-      xOffset: (Math.random() - 0.5) * 85,
-      yOffset: (Math.random() - 0.5) * 85,
+      opacity: Math.random() * 0.32 + 0.14,
+      xOffset: (Math.random() - 0.5) * 110,
+      yOffset: (Math.random() - 0.5) * 110,
+    }));
+  }, []);
+
+  const depthParticles = useMemo(() => {
+    return Array.from({ length: 26 }).map((_, i) => ({
+      id: i,
+      left: `${Math.random() * 100}%`,
+      top: `${Math.random() * 100}%`,
+      size: Math.random() * 8 + 5,
+      duration: Math.random() * 34 + 26,
+      delay: Math.random() * -20,
+      opacity: Math.random() * 0.18 + 0.08,
+      xOffset: (Math.random() - 0.5) * 140,
+      yOffset: (Math.random() - 0.5) * 140,
     }));
   }, []);
 
@@ -82,6 +101,18 @@ export default function Background3D() {
         className="absolute bottom-[30%] left-[10%] w-[35vw] h-[35vw] rounded-full bg-shell/10 blur-[100px]"
       />
 
+      {/* Aurora-style ribbon for richer depth motion */}
+      <motion.div
+        animate={{
+          x: ['-15%', '8%', '-8%', '-15%'],
+          y: ['0%', '-10%', '8%', '0%'],
+          rotate: [0, 6, -5, 0],
+          opacity: [0.45, 0.7, 0.52, 0.45],
+        }}
+        transition={{ duration: 38, repeat: Infinity, ease: 'easeInOut' }}
+        className="absolute top-[-12%] left-[-18%] h-[62vh] w-[145vw] rounded-[48%] bg-gradient-to-r from-transparent via-yellow/12 to-pink/12 blur-[120px]"
+      />
+
       {/* Dust Particles — react to mouse position and scroll */}
       <motion.div
         className="absolute inset-0 z-10"
@@ -102,6 +133,29 @@ export default function Background3D() {
               duration: p.duration,
               repeat: Infinity,
               ease: "easeInOut",
+              delay: p.delay,
+            }}
+          />
+        ))}
+      </motion.div>
+
+      {/* Larger glow motes in a deeper layer */}
+      <motion.div className="absolute inset-0 z-[8]" style={{ x: particleDepthX, y: particleDepthY }}>
+        {depthParticles.map((p) => (
+          <motion.div
+            key={p.id}
+            className="absolute rounded-full bg-white/80 blur-[1px]"
+            style={{ left: p.left, top: p.top, width: p.size, height: p.size }}
+            animate={{
+              x: [0, p.xOffset, 0],
+              y: [0, p.yOffset, 0],
+              scale: [0.8, 1.35, 0.8],
+              opacity: [p.opacity * 0.35, p.opacity, p.opacity * 0.35],
+            }}
+            transition={{
+              duration: p.duration,
+              repeat: Infinity,
+              ease: 'easeInOut',
               delay: p.delay,
             }}
           />
