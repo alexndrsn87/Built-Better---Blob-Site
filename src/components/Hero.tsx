@@ -19,8 +19,8 @@ export default function Hero({ onRequestPrototype }: HeroProps) {
         className="mx-auto w-full max-w-5xl"
       >
         <h1 className="mb-8 font-display text-6xl font-black leading-[1.12] tracking-tighter md:mb-10 md:text-8xl">
-          Websites, <br className="hidden md:block" />
-          <span className="animate-gradient bg-gradient-to-r from-yellow via-pink to-yellow bg-[length:200%_auto] bg-clip-text text-transparent">
+          Websites,{' '}
+          <span className="inline-block whitespace-nowrap animate-gradient bg-gradient-to-r from-yellow via-pink to-yellow bg-[length:200%_auto] bg-clip-text text-transparent">
             without the headache.
           </span>
         </h1>
