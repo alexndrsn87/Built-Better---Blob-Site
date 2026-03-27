@@ -7,41 +7,51 @@ type HeroProps = {
 
 export default function Hero({ onRequestPrototype }: HeroProps) {
   return (
-    <section className="relative z-10 flex min-h-[88vh] flex-col items-center justify-center px-4 pb-14 pt-40 text-center sm:pt-44 md:pt-48 md:pb-16">
+    <section
+      id="home"
+      className="relative z-10 flex min-h-[88vh] scroll-mt-28 flex-col items-center justify-center px-4 pb-14 pt-40 text-center sm:scroll-mt-32 sm:pt-44 md:pt-48 md:pb-16"
+    >
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ type: 'spring', stiffness: 100, damping: 20, delay: 0.2 }}
         className="mx-auto max-w-4xl"
       >
-        <h1 className="mb-6 font-display text-6xl font-black leading-[1.1] tracking-tighter md:text-8xl">
-          Websites, <br className="hidden md:block" />
+        <h1 className="mb-6 font-display text-4xl font-black leading-[1.1] tracking-tighter text-white sm:text-5xl md:text-6xl lg:text-7xl">
+          Professional websites for{' '}
           <span className="animate-gradient bg-gradient-to-r from-yellow via-pink to-yellow bg-[length:200%_auto] bg-clip-text text-transparent">
-            without the headache.
+            local businesses & tradies.
           </span>
+          <br />
+          <span className="text-shell/95">Built for you, managed by us.</span>
         </h1>
-        <p className="mx-auto mb-8 max-w-2xl text-xl font-medium leading-relaxed text-shell/90 md:text-2xl">
-          No hidden fees. No tech jargon. Just a great website that works for your business.
+        <p className="mx-auto mb-8 max-w-2xl text-lg font-medium leading-relaxed text-shell/90 md:text-xl">
+          No tech stress. One predictable monthly cost. We handle the updates — you focus on customers.
         </p>
 
+        <div className="mx-auto mb-10 flex max-w-xl flex-wrap items-center justify-center gap-3 text-sm font-medium text-shell/90 md:text-base">
+          <span className="glass-panel rounded-full px-4 py-2">No technical skills required</span>
+          <span className="glass-panel rounded-full px-4 py-2">Fixed monthly costs</span>
+        </div>
+
         <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <motion.a
+            href="#pricing"
+            whileHover={{ scale: 1.05, y: -5 }}
+            whileTap={{ scale: 0.95 }}
+            className="w-full rounded-full bg-yellow px-8 py-4 text-lg font-bold text-navy shadow-[0_8px_30px_rgb(255,235,15,0.3)] transition-shadow hover:shadow-[0_8px_30px_rgb(255,235,15,0.5)] sm:w-auto"
+          >
+            See your demo
+          </motion.a>
           <motion.button
             type="button"
             whileHover={{ scale: 1.05, y: -5 }}
             whileTap={{ scale: 0.95 }}
             onClick={onRequestPrototype}
-            className="w-full rounded-full bg-yellow px-8 py-4 text-lg font-bold text-navy shadow-[0_8px_30px_rgb(255,235,15,0.3)] transition-shadow hover:shadow-[0_8px_30px_rgb(255,235,15,0.5)] sm:w-auto"
-          >
-            Get your £49 prototype
-          </motion.button>
-          <motion.a
-            href="#pricing"
-            whileHover={{ scale: 1.05, y: -5 }}
-            whileTap={{ scale: 0.95 }}
             className="glass-panel w-full rounded-full px-8 py-4 text-lg font-bold text-white sm:w-auto"
           >
-            See what it costs
-          </motion.a>
+            Get in touch
+          </motion.button>
         </div>
 
         <motion.div
@@ -50,9 +60,12 @@ export default function Hero({ onRequestPrototype }: HeroProps) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.75, duration: 0.45 }}
         >
-          <p className="text-xs font-medium uppercase tracking-[0.2em] text-shell/75 md:text-sm">
+          <a
+            href="#what-we-do"
+            className="text-xs font-medium uppercase tracking-[0.2em] text-shell/75 md:text-sm"
+          >
             Scroll down
-          </p>
+          </a>
           <div className="mt-3 flex flex-col items-center gap-0.5">
             {[0, 1, 2].map((i) => (
               <motion.div
