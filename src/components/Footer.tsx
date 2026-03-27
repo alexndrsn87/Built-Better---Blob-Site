@@ -9,8 +9,8 @@ export default function Footer() {
           jargon.
         </p>
         <p className="mb-8 max-w-lg text-sm text-shell/50">
-          15% off setup for NHS, Blue Light, and Armed Forces. £49 test-site mockup — credited to your sign-up
-          if you go ahead.
+          15% off setup for NHS, Blue Light, and Armed Forces. The £49 Prototype — £49 off your setup if you
+          proceed.
         </p>
         <p className="text-sm text-shell/40">© {new Date().getFullYear()} Built Better. All rights reserved.</p>
       </div>

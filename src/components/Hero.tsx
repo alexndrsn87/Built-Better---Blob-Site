@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, Check } from 'lucide-react';
 
 type HeroProps = {
   onRequestPrototype?: () => void;
@@ -35,12 +35,36 @@ export default function Hero({ onRequestPrototype }: HeroProps) {
           <span className="glass-panel rounded-full px-4 py-2">Fixed monthly costs</span>
         </div>
 
-        <div className="mx-auto mb-6 max-w-2xl rounded-[28px] border border-yellow/25 bg-yellow/10 px-5 py-4 text-left text-sm leading-relaxed text-shell/95 shadow-[0_0_40px_rgba(255,235,15,0.08)] md:text-base">
-          <p className="font-display font-bold text-yellow">£49 test-site mockup</p>
-          <p className="mt-1">
-            See how your site could look before you commit. For £49 we build a mockup you can review — if you
-            like it and go ahead, that £49 comes off your sign-up fee.
+        <div className="mx-auto mb-6 max-w-2xl rounded-[28px] border border-yellow/25 bg-yellow/10 px-5 py-5 text-left text-sm leading-relaxed text-shell/95 shadow-[0_0_40px_rgba(255,235,15,0.08)] md:px-6 md:text-base">
+          <p className="font-display text-lg font-bold text-yellow md:text-xl">The £49 Prototype</p>
+          <p className="mt-2 font-display text-2xl font-black text-white md:text-3xl">
+            £49{' '}
+            <span className="text-base font-semibold text-shell/80 md:text-lg">/ 24-hour turnaround</span>
           </p>
+          <p className="mt-3 text-shell/90">
+            We build a custom interactive homepage blueprint in 24 hours. Link expires in 7 days.
+          </p>
+          <ul className="mt-4 space-y-2.5 text-shell/90">
+            {[
+              'Custom Design (No Templates)',
+              'Interactive Preview',
+              '£49 deducted from setup fee if you proceed',
+            ].map((line) => (
+              <li key={line} className="flex items-start gap-2.5">
+                <Check className="mt-0.5 h-4 w-4 shrink-0 text-yellow" strokeWidth={2.5} />
+                <span>{line}</span>
+              </li>
+            ))}
+          </ul>
+          <motion.button
+            type="button"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            onClick={onRequestPrototype}
+            className="mt-5 w-full rounded-full bg-yellow px-6 py-3.5 text-center text-base font-bold text-navy shadow-[0_4px_14px_0_rgba(255,235,15,0.39)] sm:py-4 sm:text-lg"
+          >
+            Get the £49 prototype
+          </motion.button>
         </div>
 
         <p className="mx-auto mb-10 max-w-xl text-sm font-medium text-shell/80 md:text-base">
@@ -55,7 +79,7 @@ export default function Hero({ onRequestPrototype }: HeroProps) {
             whileTap={{ scale: 0.95 }}
             className="w-full rounded-full bg-yellow px-8 py-4 text-lg font-bold text-navy shadow-[0_8px_30px_rgb(255,235,15,0.3)] transition-shadow hover:shadow-[0_8px_30px_rgb(255,235,15,0.5)] sm:w-auto"
           >
-            See pricing &amp; mockup
+            See packages
           </motion.a>
           <motion.button
             type="button"
@@ -64,7 +88,7 @@ export default function Hero({ onRequestPrototype }: HeroProps) {
             onClick={onRequestPrototype}
             className="glass-panel w-full rounded-full px-8 py-4 text-lg font-bold text-white sm:w-auto"
           >
-            Get in touch
+            Get the £49 prototype
           </motion.button>
         </div>
 

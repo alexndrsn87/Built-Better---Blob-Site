@@ -1,6 +1,12 @@
 import { motion, AnimatePresence } from 'motion/react';
 import { useEffect, useId } from 'react';
-import { X } from 'lucide-react';
+import { X, Check } from 'lucide-react';
+
+const prototypeBullets = [
+  'Custom Design (No Templates)',
+  'Interactive Preview',
+  '£49 deducted from setup fee if you proceed',
+];
 
 const CONTACT_EMAIL = import.meta.env.VITE_CONTACT_EMAIL ?? 'hello@builtbetter.co.uk';
 
@@ -68,16 +74,26 @@ export default function PrototypeModal({ open, onClose }: PrototypeModalProps) {
 
             <div className="relative flex items-start justify-between gap-4">
               <div>
-                <p className="text-xs font-display font-semibold uppercase tracking-[0.2em] text-yellow">
-                  £49 test-site mockup
-                </p>
-                <h2 id={titleId} className="mt-2 font-display text-2xl font-bold text-white md:text-3xl">
-                  Get started
+                <h2 id={titleId} className="font-display text-2xl font-bold text-white md:text-3xl">
+                  The £49 Prototype
                 </h2>
+                <p className="mt-2 font-display text-xl font-black text-white md:text-2xl">
+                  £49{' '}
+                  <span className="text-base font-semibold text-shell/75 md:text-lg">/ 24-hour turnaround</span>
+                </p>
                 <p className="mt-2 text-sm text-shell/80">
-                  We&apos;ll build a mockup so you can see how your site could look. If you sign up to a
-                  package, the £49 comes off your setup fee. Tell us a bit about you — we&apos;ll reply within
-                  one business day.
+                  We build a custom interactive homepage blueprint in 24 hours. Link expires in 7 days.
+                </p>
+                <ul className="mt-4 space-y-2 text-sm text-shell/85">
+                  {prototypeBullets.map((line) => (
+                    <li key={line} className="flex items-start gap-2">
+                      <Check className="mt-0.5 h-4 w-4 shrink-0 text-yellow" strokeWidth={2.5} />
+                      <span>{line}</span>
+                    </li>
+                  ))}
+                </ul>
+                <p className="mt-4 text-sm text-shell/70">
+                  Tell us about your business below — we&apos;ll reply within one business day.
                 </p>
               </div>
               <button
@@ -100,7 +116,7 @@ export default function PrototypeModal({ open, onClose }: PrototypeModalProps) {
                   company: String(fd.get('company') ?? ''),
                   project: String(fd.get('project') ?? ''),
                 };
-                const subject = encodeURIComponent('Prototype request — Built Better');
+                const subject = encodeURIComponent('The £49 Prototype — Built Better');
                 const body = encodeURIComponent(
                   `Name: ${payload.name}\nEmail: ${payload.email}\nCompany (optional): ${payload.company}\n\nWhat they want:\n${payload.project}`
                 );
@@ -172,7 +188,7 @@ export default function PrototypeModal({ open, onClose }: PrototypeModalProps) {
                   type="submit"
                   className="rounded-full bg-yellow px-8 py-3 text-sm font-bold text-navy shadow-[0_4px_20px_rgba(255,235,15,0.35)] transition hover:shadow-[0_6px_28px_rgba(255,235,15,0.45)]"
                 >
-                  Send request
+                  Get the £49 prototype
                 </button>
               </div>
             </form>

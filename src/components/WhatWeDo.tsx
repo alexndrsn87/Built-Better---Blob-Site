@@ -4,9 +4,9 @@ import { Sparkles, Shield, MessageCircle, MapPin } from 'lucide-react';
 const pillars = [
   {
     icon: Sparkles,
-    title: '£49 test-site mockup',
+    title: 'The £49 Prototype',
     body:
-      'Before you commit, we can build a mockup so you can see how your site could look. It costs £49 — if you like it and sign up, that £49 comes off your setup fee.',
+      '£49 / 24-hour turnaround. We build a custom interactive homepage blueprint in 24 hours. Link expires in 7 days. Custom Design (No Templates), Interactive Preview, and £49 deducted from setup fee if you proceed.',
   },
   {
     icon: Shield,

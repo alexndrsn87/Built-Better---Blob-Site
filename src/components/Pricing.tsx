@@ -1,6 +1,12 @@
 import { motion } from 'motion/react';
 import { Check, Zap, Heart } from 'lucide-react';
 
+const prototypeBullets = [
+  'Custom Design (No Templates)',
+  'Interactive Preview',
+  '£49 deducted from setup fee if you proceed',
+];
+
 type PricingProps = {
   onRequestPrototype?: () => void;
 };
@@ -73,13 +79,35 @@ export default function Pricing({ onRequestPrototype }: PricingProps) {
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="glass-panel-light rounded-3xl border border-pink/25 p-6 text-left shadow-lg md:p-8"
+            className="glass-panel-light flex flex-col rounded-3xl border border-pink/25 p-6 text-left shadow-lg md:p-8"
           >
-            <h3 className="font-display text-xl font-bold text-navy md:text-2xl">£49 test-site mockup</h3>
-            <p className="mt-2 text-sm font-medium leading-relaxed text-navy/80 md:text-base">
-              Not sure yet? We’ll build a mockup so you can see how your site could look. The £49 is paid
-              upfront — if you go ahead with a package, we take it off your sign-up fee.
+            <h3 className="font-display text-xl font-bold text-navy md:text-2xl">The £49 Prototype</h3>
+            <p className="mt-2 font-display text-3xl font-black text-navy md:text-4xl">
+              £49{' '}
+              <span className="text-base font-semibold text-navy/60 md:text-lg">/ 24-hour turnaround</span>
             </p>
+            <p className="mt-3 text-sm font-medium leading-relaxed text-navy/80 md:text-base">
+              We build a custom interactive homepage blueprint in 24 hours. Link expires in 7 days.
+            </p>
+            <ul className="mt-4 flex-1 space-y-2.5 text-sm font-medium text-navy/85 md:text-base">
+              {prototypeBullets.map((line) => (
+                <li key={line} className="flex items-start gap-2.5">
+                  <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-pink/15 text-pink">
+                    <Check className="h-3 w-3" />
+                  </span>
+                  {line}
+                </li>
+              ))}
+            </ul>
+            <motion.button
+              type="button"
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.98 }}
+              onClick={() => onRequestPrototype?.()}
+              className="mt-6 w-full rounded-full bg-navy py-3.5 text-base font-bold text-white md:py-4 md:text-lg"
+            >
+              Get the £49 prototype
+            </motion.button>
           </motion.div>
           <motion.div
             initial={{ opacity: 0, y: 12 }}
